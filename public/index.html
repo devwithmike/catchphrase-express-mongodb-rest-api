@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Catchphrase GraphQL</title>
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/darcula.min.css">
+</head>
+
+<body>
+
+	<section class="text-gray-700 body-font">
+		<div class="container px-8 mx-auto py-20 lg:px-4">
+			<div class="flex flex-col w-full mb-8 text-left">
+				<h1 class="mb-6 text-xl font-semibold tracking-tighter text-black sm:text-4xl title-font">
+					Catchphrase REST API
+				</h1>
+				<p class="text-base font-medium leading-relaxed text-gray-700">
+					An API built with Express and MongoDB. This is a REST API which can be accessed at the link below:
+				</p>
+				<pre>
+					<code class="hljs http">
+	https://catchphrase-rest-api.herokuapp.com/catchphrases
+					</code>
+				</pre>
+			</div>
+			<div class="flex flex-col w-full mb-8 text-left">
+				<h2 class="mb-6 text-xl font-semibold tracking-tighter text-black sm:text-2xl title-font">
+					Catchphrases
+				</h2>
+				<p class="text-base font-medium leading-relaxed text-gray-700">
+					Get all the catchphrases
+				</p>
+				<pre>
+					<code class="hljs">
+	Type: GET
+	Link: /catchphrases
+					</code>
+				</pre>
+			</div>
+			<div class="flex flex-col w-full mb-8 text-left">
+				<h2 class="mb-6 text-xl font-semibold tracking-tighter text-black sm:text-2xl title-font">
+					Single Catchphrase
+				</h2>
+				<p class="text-base font-medium leading-relaxed text-gray-700">
+					Get a catchphrases by id
+				</p>
+				<pre>
+					<code class="hljs">
+	Type: GET
+	Link: /catchphrases/:id
+					</code>
+				</pre>
+			</div>
+			<div class="flex flex-col w-full mb-8 text-left">
+				<h2 class="mb-6 text-xl font-semibold tracking-tighter text-black sm:text-2xl title-font">
+					Add Catchphrase
+				</h2>
+				<p class="text-base font-medium leading-relaxed text-gray-700">
+					Create a new catchphrase
+				</p>
+				<pre>
+					<code class="hljs">
+	Type: POST
+	Link: /catchphrases
+	Body: 
+		{
+			"movieName": "AUSTIN POWERS: INTERNATIONAL MAN OF MYSTERY",
+			"catchphrase": "Yeah baby, yeah!",
+			"movieContext": "Austin Powers, conversing with his partner, Mrs. Kensington"
+		}
+					</code>
+				</pre>
+			</div>
+			<div class="flex flex-col w-full mb-8 text-left">
+				<h2 class="mb-6 text-xl font-semibold tracking-tighter text-black sm:text-2xl title-font">
+					Update Catchphrase
+				</h2>
+				<p class="text-base font-medium leading-relaxed text-gray-700">
+					Update a catchphrases by id
+				</p>
+				<pre>
+					<code class="hljs">
+	Type: PATCH
+	Link: /catchphrases/:id
+	Body: 
+		{
+			"movieName": "AUSTIN POWERS: INTERNATIONAL MAN OF MYSTERY",
+			"catchphrase": "Yeah baby, yeah!",
+			"movieContext": "Austin Powers, conversing with his partner, Mrs. Kensington"
+		}
+
+	// All three fields are optional when updating
+					</code>
+				</pre>
+			</div>
+			<div class="flex flex-col w-full mb-8 text-left">
+				<h2 class="mb-6 text-xl font-semibold tracking-tighter text-black sm:text-2xl title-font">
+					Remove Catchphrase
+				</h2>
+				<p class="text-base font-medium leading-relaxed text-gray-700">
+					Delete a catchphrase by id
+				</p>
+				<pre>
+					<code class="hljs">
+	Type: DELETE
+	Link: /catchphrases/:id
+					</code>
+				</pre>
+			</div>
+	</section>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>
+		hljs.highlightAll();
+	</script>
+
+</body>
+
+</html>
