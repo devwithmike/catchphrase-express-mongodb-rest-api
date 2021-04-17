@@ -1,0 +1,76 @@
+const express = require('express');
+const router = express.Router();
+const Catchphrase = require('../models/catchphrase');
+
+router.get('/', async (req, res) => {
+	try {
+		const catchphrases = await Catchphrase.find({});
+		res.json(catchphrases);
+	} catch (err) {
+		res.status(500).json({ message: err.message });
+	}
+});
+
+router.get('/:id', getCatchphrase, (req, res) => {
+	res.json(res.catchphrase);
+});
+
+router.post('/', async (req, res) => {
+	const catchphrase = new Catchphrase({
+		movieName: req.body.movieName,
+		catchphrase: req.body.catchphrase,
+		movieContext: req.body.movieContext,
+	});
+
+	try {
+		const newCatchphrase = await catchphrase.save();
+		res.status(201).json(newCatchphrase);
+	} catch (err) {
+		res.status(400).json({ message: err.message });
+	}
+});
+
+router.patch('/:id', getCatchphrase, async (req, res) => {
+	if (req.body.movieName != null) {
+		res.catchphrase.movieName = req.body.movieName
+	}
+	if (req.body.catchphrase != null) {
+		res.catchphrase.catchphrase = req.body.catchphrase
+	}
+	if (req.body.movieContext != null) {
+		res.catchphrase.movieContext = req.body.movieContext
+	}
+
+	try {
+		const updatedCatchphrase = await res.catchphrase.save()
+		res.json(updatedCatchphrase)
+	} catch (err) {
+		rs.status(400).json({ message: err.message })
+	}
+});
+
+router.delete('/:id', getCatchphrase, async (req, res) => {
+	try {
+		await res.catchphrase.remove();
+		res.json({ message: 'Deleted Catchphrase' });
+	} catch (err) {
+		res.status(500).json({ message: err.message });
+	}
+});
+
+async function getCatchphrase(req, res, next) {
+	let catchphrase;
+	try {
+		catchphrase = await Catchphrase.findById(req.params.id);
+		if (catchphrase == null) {
+			return res.status(404).json({ message: 'Cannot find catchphrase' });
+		}
+	} catch (err) {
+		return res.status(500).json({ message: err.message });
+	}
+
+	res.catchphrase = catchphrase;
+	next();
+}
+
+module.exports = router;
