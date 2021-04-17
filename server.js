@@ -10,4 +10,4 @@ app.use(express.json());
 const catchphrasesRouter = require('./routes/catchphrases');
 app.use('/catchphrases', catchphrasesRouter)
 
-app.listen(process.env.port || 3000, () => console.log('Daar vat hy!!!'));
+app.listen(process.env.PORT || 3000, () => console.log('Daar vat hy!!!'));
