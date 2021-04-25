@@ -19,7 +19,7 @@ https://catchphrase-rest-api.herokuapp.com/catchphrases
 #### Get catchphrase
 
 ```http
-  GET /catchphrases/${id}
+  GET /catchphrases/:id
 ```
 
 | Parameter | Type     | Description                       |
@@ -46,7 +46,7 @@ https://catchphrase-rest-api.herokuapp.com/catchphrases
 #### Update catchphrase
 
 ```http
-  PATCH /catchphrases/${id}
+  PATCH /catchphrases/:id
 ```
 
 | Parameter | Type     | Description                       |
@@ -68,7 +68,7 @@ https://catchphrase-rest-api.herokuapp.com/catchphrases
 #### Remove catchphrase
 
 ```http
-  DELETE /catchphrases/${id}
+  DELETE /catchphrases/:id
 ```
 
 | Parameter | Type     | Description                       |
