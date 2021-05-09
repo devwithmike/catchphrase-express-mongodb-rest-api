@@ -12,7 +12,9 @@
 	"license": "ISC",
 	"dependencies": {
 		"express": "^4.17.1",
-		"mongoose": "^5.12.4"
+		"mongoose": "^5.12.4",
+		"swagger-jsdoc": "^6.0.0",
+		"swagger-ui-express": "^4.1.6"
 	},
 	"devDependencies": {
 		"dotenv": "^8.2.0",

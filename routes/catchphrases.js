@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Catchphrase = require('../models/catchphrase');
 
+/**
+ * @swagger
+ * /catchphrases:
+ *   get:
+ *     description: All catchphrases
+ *     responses:
+ *       200:
+ *         description: Returns all the catachphrases
+ */
 router.get('/', async (req, res) => {
 	try {
 		const catchphrases = await Catchphrase.find({});
@@ -11,10 +20,46 @@ router.get('/', async (req, res) => {
 	}
 });
 
+/**
+ * @swagger
+ * /catchphrases/{id}:
+ *   get:
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        type: string
+ *        description: The catchphrase ID.
+ *     description: Get a catchphrase by id
+ *     responses:
+ *       200:
+ *         description: Returns the requested catachphrase
+ */
 router.get('/:id', getCatchphrase, (req, res) => {
 	res.json(res.catchphrase);
 });
 
+/**
+ * @swagger
+ * /catchphrases:
+ *   post:
+ *     parameters:
+ *      - in: body
+ *        name: catchphrase
+ *        description: New catchphrase
+ *        schema:
+ *          type: object
+ *          properties:
+ *            movieName:
+ *              type: string
+ *            catchphrase:
+ *              type: string
+ *            movieContext:
+ *              type: string
+ *     responses:
+ *       201:
+ *         description: Created
+ */
 router.post('/', async (req, res) => {
 	const catchphrase = new Catchphrase({
 		movieName: req.body.movieName,
@@ -30,6 +75,32 @@ router.post('/', async (req, res) => {
 	}
 });
 
+/**
+ * @swagger
+ * /catchphrases/{id}:
+ *   patch:
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        type: string
+ *        description: The catchphrase ID.
+ *      - in: body
+ *        name: catchphrase
+ *        description: Update catchphrase
+ *        schema:
+ *          type: object
+ *          properties:
+ *            movieName:
+ *              type: string
+ *            catchphrase:
+ *              type: string
+ *            movieContext:
+ *              type: string
+ *     responses:
+ *       201:
+ *         description: Created
+ */
 router.patch('/:id', getCatchphrase, async (req, res) => {
 	if (req.body.movieName != null) {
 		res.catchphrase.movieName = req.body.movieName
@@ -49,6 +120,21 @@ router.patch('/:id', getCatchphrase, async (req, res) => {
 	}
 });
 
+/**
+ * @swagger
+ * /catchphrases/{id}:
+ *   delete:
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        type: string
+ *        description: The catchphrase ID.
+ *     description: Delete a catchphrase by id
+ *     responses:
+ *       200:
+ *         description: Returns the requested catachphrase
+ */
 router.delete('/:id', getCatchphrase, async (req, res) => {
 	try {
 		await res.catchphrase.remove();
