@@ -21,8 +21,8 @@ const swaggerOptions = {
 }
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/catchphrases', catchphrases)
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.use('/catchphrases', catchphrases)
 
 app.listen(process.env.PORT || 5000, () => console.log('Daar vat hy!!!'));
