@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const connectDb = require("./config/db");
 const { catchphrases } = require("./routes/index");
@@ -20,8 +19,9 @@ const swaggerOptions = {
 	apis: ["./routes/catchphrases.js"]
 }
 
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/catchphrases', catchphrases)
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
