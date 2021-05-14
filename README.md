@@ -1,5 +1,5 @@
 
-# Catchphrase REST API
+# Catchphrase Express and MongoDB REST API
 
 An API built with Express and MongoDB. Documented with Swagger.
 
