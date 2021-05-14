@@ -80,8 +80,8 @@ https://catchphrase-express-rest-api.herokuapp.com/catchphrases
 
 ## Links
 
-[Docs](https://catchphrase-express-rest-api.herokuapp.com/)
+[Docs](https://express-mongodb-rest-api.herokuapp.com/)
 
-[Demo](https://catchphrase-express-rest-api.herokuapp.com/catchphrases)
+[Demo](https://express-mongodb-rest-api.herokuapp.com/catchphrases)
 
 [Tutorial](https://dev.to/mikefmeyer/build-a-node-js-express-rest-api-with-mongodb-and-swagger-3de9)
