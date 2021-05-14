@@ -7,7 +7,7 @@ An API built with Express and MongoDB.
 ## API Reference
 
 ```http
-https://catchphrase-rest-api.herokuapp.com/catchphrases
+https://catchphrase-express-rest-api.herokuapp.com/catchphrases
 ```
 
 #### Get all catchphrases
@@ -78,6 +78,6 @@ https://catchphrase-rest-api.herokuapp.com/catchphrases
 
 ## Links
 
-[Docs](https://catchphrase-rest-api.herokuapp.com/)
+[Docs](https://catchphrase-express-rest-api.herokuapp.com/)
 
-[Demo](https://catchphrase-rest-api.herokuapp.com/catchphrases)
+[Demo](https://catchphrase-express-rest-api.herokuapp.com/catchphrases)
