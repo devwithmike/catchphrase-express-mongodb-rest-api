@@ -1,7 +1,9 @@
 
 # Catchphrase REST API
 
-An API built with Express and MongoDB.
+An API built with Express and MongoDB. Documented with Swagger.
+
+Tutorial available at: [dev.to](https://dev.to/mikefmeyer/build-a-node-js-express-rest-api-with-mongodb-and-swagger-3de9)
 
 
 ## API Reference
@@ -81,3 +83,5 @@ https://catchphrase-express-rest-api.herokuapp.com/catchphrases
 [Docs](https://catchphrase-express-rest-api.herokuapp.com/)
 
 [Demo](https://catchphrase-express-rest-api.herokuapp.com/catchphrases)
+
+[Tutorial](https://dev.to/mikefmeyer/build-a-node-js-express-rest-api-with-mongodb-and-swagger-3de9)
