@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Catchphrase = require('../models/catchphrase');
+let { getAllCatchphrases, getCatchphraseById, addCatchphrase, updateCatchphrase, removeCatchphrase } = require('../controllers/catchphraseController')
 
 /**
  * @swagger
@@ -12,11 +12,11 @@ const Catchphrase = require('../models/catchphrase');
  *         description: Returns all the catachphrases
  */
 router.get('/', async (req, res) => {
-	try {
-		const catchphrases = await Catchphrase.find({});
-		res.json(catchphrases);
-	} catch (err) {
-		res.status(500).json({ message: err.message });
+	let response = await getAllCatchphrases(req.query.s, req.query.page, req.query.limit);
+	if (response.success == true) {
+		res.status(200).json(response);
+	} else {
+		res.status(404).json(response);
 	}
 });
 
@@ -35,8 +35,9 @@ router.get('/', async (req, res) => {
  *       200:
  *         description: Returns the requested catachphrase
  */
-router.get('/:id', getCatchphrase, (req, res) => {
-	res.json(res.catchphrase);
+router.get('/:id', async (req, res) => {
+	let response = await getCatchphraseById(req.params.id);
+	res.json(response);
 });
 
 /**
@@ -61,17 +62,17 @@ router.get('/:id', getCatchphrase, (req, res) => {
  *         description: Created
  */
 router.post('/', async (req, res) => {
-	const catchphrase = new Catchphrase({
+	let body = {
 		movieName: req.body.movieName,
 		catchphrase: req.body.catchphrase,
 		movieContext: req.body.movieContext,
-	});
+	};
+	let response = await addCatchphrase(body);
 
-	try {
-		const newCatchphrase = await catchphrase.save();
-		res.status(201).json(newCatchphrase);
-	} catch (err) {
-		res.status(400).json({ message: err.message });
+	if (response.success == true) {
+		res.status(201).json(response);
+	} else {
+		res.status(404).json(response);
 	}
 });
 
@@ -101,22 +102,17 @@ router.post('/', async (req, res) => {
  *       201:
  *         description: Created
  */
-router.patch('/:id', getCatchphrase, async (req, res) => {
-	if (req.body.movieName != null) {
-		res.catchphrase.movieName = req.body.movieName
-	}
-	if (req.body.catchphrase != null) {
-		res.catchphrase.catchphrase = req.body.catchphrase
-	}
-	if (req.body.movieContext != null) {
-		res.catchphrase.movieContext = req.body.movieContext
-	}
+router.put('/:id', async (req, res) => {
+	let movieName = null, catchphrase = null, movieContext = null;
+	if (req.body.movieName) {movieName = req.body.movieName}
+	if (req.body.catchphrase) {catchphrase = req.body.catchphrase}
+	if (req.body.movieContext) {movieContext = req.body.movieContext}
+	let response = await updateCatchphrase(req.params.id, movieName, catchphrase, movieContext);
 
-	try {
-		const updatedCatchphrase = await res.catchphrase.save()
-		res.json(updatedCatchphrase)
-	} catch (err) {
-		rs.status(400).json({ message: err.message })
+	if (response.success == true) {
+		res.status(201).json(response);
+	} else {
+		res.status(404).json(response);
 	}
 });
 
@@ -135,28 +131,13 @@ router.patch('/:id', getCatchphrase, async (req, res) => {
  *       200:
  *         description: Returns the requested catachphrase
  */
-router.delete('/:id', getCatchphrase, async (req, res) => {
+router.delete('/:id', async (req, res) => {
+	let response = await removeCatchphrase(req.params.id)
 	try {
-		await res.catchphrase.remove();
-		res.json({ message: 'Deleted Catchphrase' });
+		res.status(200).json(response);
 	} catch (err) {
-		res.status(500).json({ message: err.message });
+		res.status(500).json(response);
 	}
 });
-
-async function getCatchphrase(req, res, next) {
-	let catchphrase;
-	try {
-		catchphrase = await Catchphrase.findById(req.params.id);
-		if (catchphrase == null) {
-			return res.status(404).json({ message: 'Cannot find catchphrase' });
-		}
-	} catch (err) {
-		return res.status(500).json({ message: err.message });
-	}
-
-	res.catchphrase = catchphrase;
-	next();
-}
 
 module.exports = router;
