@@ -9,7 +9,7 @@ Tutorial available at: [dev.to](https://dev.to/mikefmeyer/build-a-node-js-expres
 ## API Reference
 
 ```http
-https://catchphrase-express-rest-api.herokuapp.com/catchphrases
+https://express-mongodb-rest-api.herokuapp.com/catchphrases
 ```
 
 #### Get all catchphrases
