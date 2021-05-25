@@ -22,7 +22,7 @@ async function getAllCatchphrases(search, reqPage, reqLimit) {
 	}
 
 	try {
-		const catchphrases = await Catchphrase.find(options).limit(limit);
+		const catchphrases = await Catchphrase.find(options).skip((page - 1) * limit).limit(limit);
 		return {
 			success: true,
 			data: catchphrases,
