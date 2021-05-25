@@ -18,6 +18,12 @@ https://express-mongodb-rest-api.herokuapp.com/catchphrases
   GET /catchphrases
 ```
 
+| Optional Parameter | Type     | Description                                        | Example       |
+| :----------------- | :------- | :------------------------------------------------- | :------------ |
+| `s`                | `string` | Serach Movie Name or Catchphrase                   | ?s=exmpletext |
+| `page`             | `int`	| Page number. Default: 1                            | ?page=2       |
+| `limit`	     | `int`    | Limit number of catchphrases per page. Default: 10 | ?limit=20     |
+
 #### Get catchphrase
 
 ```http
