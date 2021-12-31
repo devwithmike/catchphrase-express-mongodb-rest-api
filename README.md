@@ -6,11 +6,7 @@ An API built with Express and MongoDB. Documented with Swagger.
 Tutorial available at: [dev.to](https://dev.to/mikefmeyer/build-a-node-js-express-rest-api-with-mongodb-and-swagger-3de9)
 
 
-## API Reference
-
-```http
-https://express-mongodb-rest-api.herokuapp.com/catchphrases
-```
+## API Usage
 
 #### Get all catchphrases
 
@@ -85,9 +81,5 @@ https://express-mongodb-rest-api.herokuapp.com/catchphrases
 
 
 ## Links
-
-[Docs](https://express-mongodb-rest-api.herokuapp.com/)
-
-[Demo](https://express-mongodb-rest-api.herokuapp.com/catchphrases)
 
 [Tutorial](https://dev.to/mikefmeyer/build-a-node-js-express-rest-api-with-mongodb-and-swagger-3de9)
